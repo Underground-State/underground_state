@@ -1,0 +1,13 @@
+[package]
+name = "ug-db"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+ug-core.workspace = true
+sqlx.workspace = true
+redis.workspace = true
+tokio.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+tracing.workspace = true

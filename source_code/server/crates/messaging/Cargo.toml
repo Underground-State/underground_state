@@ -1,0 +1,24 @@
+[package]
+name = "ug-messaging"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+ug-core.workspace = true
+ug-db.workspace = true
+ug-auth.workspace = true
+axum.workspace = true
+axum-extra.workspace = true
+tower.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+sqlx.workspace = true
+tokio.workspace = true
+tokio-tungstenite = "0.21"
+futures.workspace = true
+uuid.workspace = true
+chrono.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+async-trait.workspace = true
+dashmap = "5.5"

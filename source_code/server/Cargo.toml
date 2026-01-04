@@ -1,0 +1,87 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/app",
+    "crates/core",
+    "crates/db",
+    "crates/auth",
+    "crates/users",
+    "crates/guilds",
+    "crates/channels",
+    "crates/messaging",
+    "crates/kyc",
+    "crates/voice",
+    "crates/common",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+authors = ["Underground State Team"]
+license = "MIT"
+
+[workspace.dependencies]
+# Web Framework
+axum = { version = "0.7", features = ["ws", "multipart", "macros"] }
+axum-extra = { version = "0.9", features = ["typed-header"] }
+tower = { version = "0.4", features = ["full"] }
+tower-http = { version = "0.5", features = ["cors", "trace", "compression-gzip"] }
+
+# Async Runtime
+tokio = { version = "1.35", features = ["full"] }
+futures = "0.3"
+
+# Database
+sqlx = { version = "0.7", features = ["runtime-tokio", "tls-rustls", "postgres", "uuid", "chrono", "json"] }
+
+# Redis
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Web3 / Crypto
+siwe = "0.6"
+ethers = { version = "2.0", default-features = false }
+alloy-primitives = "0.5"
+aes-gcm = "0.10"
+sha2 = "0.10"
+rand = "0.8"
+hex = "0.4"
+
+# JWT
+jsonwebtoken = "9"
+
+# Validation
+validator = { version = "0.16", features = ["derive"] }
+
+# Configuration
+config = "0.14"
+dotenvy = "0.15"
+
+# Logging/Tracing
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Error Handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Utilities
+uuid = { version = "1.6", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+base64 = "0.21"
+async-trait = "0.1"
+
+# Internal crates
+ug-core = { path = "crates/core" }
+ug-db = { path = "crates/db" }
+ug-auth = { path = "crates/auth" }
+ug-users = { path = "crates/users" }
+ug-guilds = { path = "crates/guilds" }
+ug-channels = { path = "crates/channels" }
+ug-messaging = { path = "crates/messaging" }
+ug-kyc = { path = "crates/kyc" }
+ug-voice = { path = "crates/voice" }
+ug-common = { path = "crates/common" }
