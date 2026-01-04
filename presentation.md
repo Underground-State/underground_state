@@ -1,98 +1,98 @@
 # Underground State
 
-## Что это?
+## What is it?
 
-Underground State — это платформа для защищённого общения и совместной работы с интеграцией блокчейн-технологий. Платформа объединяет мгновенные сообщения, голосовые и видеозвонки, а также децентрализованное управление сообществами.
+Underground State is a platform for secure communication and collaboration with blockchain technology integration. The platform combines instant messaging, voice and video calls, and decentralized community governance.
 
-## Ключевые особенности
+## Key Features
 
-### Безопасная аутентификация через криптокошельки
+### Secure Authentication via Crypto Wallets
 
-Вход в систему осуществляется через криптографические кошельки (MetaMask, Phantom, SUI Wallet). Это означает:
-- Никаких паролей для запоминания
-- Пользователь полностью контролирует свою учётную запись
-- Невозможность подделки или кражи аккаунта без доступа к кошельку
+Sign-in is performed through cryptographic wallets (MetaMask, Phantom, SUI Wallet). This means:
+- No passwords to remember
+- Users have full control over their accounts
+- Account forgery or theft is impossible without wallet access
 
-### Реальное время
+### Real-time Communication
 
-- **Текстовые сообщения** — мгновенная доставка через WebSocket
-- **Голосовые звонки** — качественная связь с поддержкой больших групп
-- **Видеозвонки** — конференции без ограничений на количество участников
+- **Text messages** — instant delivery via WebSocket
+- **Voice calls** — high-quality communication with large group support
+- **Video calls** — conferences with no participant limits
 
-### Верификация личности (KYC)
+### Identity Verification (KYC)
 
-Опциональная верификация паспорта для:
-- Повышения уровня доверия в сообществе
-- Доступа к расширенным функциям
-- Участия в голосованиях DAO
+Optional passport verification for:
+- Increasing trust level within the community
+- Access to advanced features
+- Participation in DAO voting
 
-Документы хранятся локально с шифрованием AES-256-GCM — никто кроме модераторов не имеет к ним доступа.
+Documents are stored locally with AES-256-GCM encryption — only moderators have access.
 
-### Децентрализованное управление (DAO)
+### Decentralized Governance (DAO)
 
-Сообщество управляется токенами UGS на блокчейне SUI:
-- **Голосования** — один токен = один голос
-- **Предложения** — любой держатель токенов может создать предложение
-- **Казна** — средства сообщества управляются смарт-контрактами
-- **Прозрачность** — все решения записываются в блокчейн
+The community is governed by UGS tokens on the SUI blockchain:
+- **Voting** — one token = one vote
+- **Proposals** — any token holder can create a proposal
+- **Treasury** — community funds are managed by smart contracts
+- **Transparency** — all decisions are recorded on the blockchain
 
-### Интеграция с DEX
+### DEX Integration
 
-Встроенная интеграция с Cetus CLMM позволяет:
-- Обменивать токены напрямую в приложении
-- Добавлять ликвидность
-- Участвовать в экономике платформы
+Built-in Cetus CLMM integration allows:
+- Swapping tokens directly within the app
+- Adding liquidity
+- Participating in the platform economy
 
-## Для кого это?
+## Who is it for?
 
-### Криптосообщества
-Безопасное пространство для обсуждения проектов, координации действий и принятия коллективных решений.
+### Crypto Communities
+A secure space for discussing projects, coordinating actions, and making collective decisions.
 
-### DAO и децентрализованные организации
-Полноценная инфраструктура для управления: от обсуждений до голосований и распределения средств.
+### DAOs and Decentralized Organizations
+Complete infrastructure for governance: from discussions to voting and fund distribution.
 
-### Команды разработчиков
-Защищённое общение с возможностью верификации участников и интеграцией с Web3-инструментами.
+### Developer Teams
+Secure communication with participant verification and Web3 tool integration.
 
-### Сообщества с высокими требованиями к приватности
-Криптографическая аутентификация и шифрование данных обеспечивают максимальную защиту.
+### Privacy-focused Communities
+Cryptographic authentication and data encryption provide maximum protection.
 
-## Цели проекта
+## Project Goals
 
-### 1. Суверенитет пользователя
-Пользователь владеет своим аккаунтом через криптокошелёк. Платформа не может заблокировать или удалить учётную запись без решения DAO.
+### 1. User Sovereignty
+Users own their accounts through crypto wallets. The platform cannot block or delete an account without a DAO decision.
 
-### 2. Децентрализация управления
-Ключевые решения о развитии платформы принимаются сообществом через голосования, а не единоличным владельцем.
+### 2. Decentralized Governance
+Key decisions about platform development are made by the community through voting, not by a single owner.
 
-### 3. Прозрачность
-Все финансовые операции, голосования и решения записываются в публичный блокчейн SUI.
+### 3. Transparency
+All financial operations, votes, and decisions are recorded on the public SUI blockchain.
 
-### 4. Масштабируемость
-Архитектура с шардингом позволяет обслуживать миллионы пользователей без потери производительности.
+### 4. Scalability
+Sharded architecture allows serving millions of users without performance degradation.
 
-### 5. Приватность
-- Сообщения хранятся на шардированных серверах
-- KYC-документы шифруются AES-256
-- Аутентификация не требует персональных данных
+### 5. Privacy
+- Messages are stored on sharded servers
+- KYC documents are encrypted with AES-256
+- Authentication does not require personal data
 
-## Технологический стек
+## Technology Stack
 
-| Компонент | Технология |
+| Component | Technology |
 |-----------|------------|
-| Бэкенд | Rust (Axum) |
-| База данных | PostgreSQL + Redis |
-| Фронтенд | Flutter Web |
-| Блокчейн | SUI (Move) |
-| Голос/Видео | mediasoup (WebRTC) |
-| Шифрование | AES-256-GCM |
+| Backend | Rust (Axum) |
+| Database | PostgreSQL + Redis |
+| Frontend | Flutter Web |
+| Blockchain | SUI (Move) |
+| Voice/Video | mediasoup (WebRTC) |
+| Encryption | AES-256-GCM |
 
-## Как это работает?
+## How does it work?
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      Пользователь                           │
-│            (Flutter Web / Мобильное приложение)             │
+│                          User                                │
+│              (Flutter Web / Mobile App)                      │
 └─────────────────────────┬───────────────────────────────────┘
                           │ HTTPS + WebSocket
                           ▼
@@ -118,27 +118,27 @@ Underground State — это платформа для защищённого о
 └──────────────┘  └──────────────┘  └──────────────┘
 ```
 
-## Начало работы
+## Getting Started
 
-### Для пользователей
+### For Users
 
-1. Установите криптокошелёк (MetaMask, Phantom или SUI Wallet)
-2. Перейдите на веб-приложение
-3. Подключите кошелёк и подпишите сообщение для входа
-4. Присоединяйтесь к гильдиям или создавайте свои
+1. Install a crypto wallet (MetaMask, Phantom, or SUI Wallet)
+2. Navigate to the web application
+3. Connect your wallet and sign the message to log in
+4. Join guilds or create your own
 
-### Для разработчиков
+### For Developers
 
 ```bash
-# Клонируйте репозиторий
+# Clone the repository
 git clone https://github.com/underground-state/underground_state
 
-# Запустите бэкенд
+# Run the backend
 cd source_code/server
 cp .env.example .env
 cargo run
 
-# Запустите фронтенд
+# Run the frontend
 cd source_code/client
 flutter pub get
 flutter run -d chrome
@@ -146,13 +146,13 @@ flutter run -d chrome
 
 ## Roadmap
 
-1. **Инфраструктура и Auth** — базовая авторизация через Web3
-2. **Messaging** — текстовые сообщения в реальном времени
-3. **Voice/Video** — голосовые и видеозвонки
-4. **KYC** — верификация личности
-5. **SUI Integration** — токен UGS, DAO, интеграция с DEX
-6. **Sharding** — горизонтальное масштабирование
+1. **Infrastructure and Auth** — basic Web3 authorization
+2. **Messaging** — real-time text messages
+3. **Voice/Video** — voice and video calls
+4. **KYC** — identity verification
+5. **SUI Integration** — UGS token, DAO, DEX integration
+6. **Sharding** — horizontal scaling
 
-## Лицензия
+## License
 
 MIT
