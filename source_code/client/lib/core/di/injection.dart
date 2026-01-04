@@ -70,10 +70,10 @@ Future<void> initDependencies() async {
 
   // Chat
   getIt.registerLazySingleton<ChatRemoteDataSource>(
-    () => ChatRemoteDataSourceImpl(getIt()),
+    () => ChatRemoteDataSourceImpl(getIt(), getIt()),
   );
   getIt.registerLazySingleton<ChatRepository>(
-    () => ChatRepositoryImpl(getIt(), getIt()),
+    () => ChatRepositoryImpl(getIt()),
   );
   getIt.registerFactory(() => ChatBloc(getIt()));
 }

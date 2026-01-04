@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/presentation/pages/login_page.dart';
+import '../../features/chat/presentation/bloc/chat_bloc.dart';
 import '../../features/chat/presentation/pages/chat_page.dart';
+import '../../features/guilds/presentation/bloc/guilds_bloc.dart';
 import '../../features/guilds/presentation/pages/guilds_page.dart';
 import '../di/injection.dart';
 import '../storage/session_manager.dart';
@@ -19,7 +22,7 @@ final appRouter = GoRouter(
     }
 
     if (isLoggedIn && isLoginRoute) {
-      return '/';
+      return '/guilds';
     }
 
     return null;
@@ -31,56 +34,49 @@ final appRouter = GoRouter(
       builder: (context, state) => const LoginPage(),
     ),
     ShellRoute(
-      builder: (context, state, child) => AppShell(child: child),
+      builder: (context, state, child) {
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => getIt<GuildsBloc>()),
+            BlocProvider(create: (_) => getIt<ChatBloc>()),
+          ],
+          child: GuildsPage(child: child),
+        );
+      },
       routes: [
-        GoRoute(
-          path: '/',
-          name: 'home',
-          redirect: (_, __) => '/guilds',
-        ),
         GoRoute(
           path: '/guilds',
           name: 'guilds',
-          builder: (context, state) => const GuildsPage(),
+          builder: (context, state) => const EmptyChatPlaceholder(),
+        ),
+        GoRoute(
+          path: '/guilds/:guildId',
+          name: 'guild',
+          builder: (context, state) => const EmptyChatPlaceholder(),
         ),
         GoRoute(
           path: '/guilds/:guildId/channels/:channelId',
           name: 'channel',
-          builder: (context, state) => ChatPage(
-            guildId: state.pathParameters['guildId']!,
-            channelId: state.pathParameters['channelId']!,
-          ),
+          builder: (context, state) {
+            final channelId = state.pathParameters['channelId']!;
+            // Get channel name from bloc state
+            final guildsState = context.read<GuildsBloc>().state;
+            String channelName = 'general';
+            if (guildsState is GuildsLoaded) {
+              final channel = guildsState.channels
+                  .where((c) => c.id == channelId)
+                  .firstOrNull;
+              if (channel != null) {
+                channelName = channel.name;
+              }
+            }
+            return ChatPage(
+              channelId: channelId,
+              channelName: channelName,
+            );
+          },
         ),
       ],
     ),
   ],
 );
-
-class AppShell extends StatelessWidget {
-  final Widget child;
-
-  const AppShell({super.key, required this.child});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Row(
-        children: [
-          // Server sidebar
-          Container(
-            width: 72,
-            color: const Color(0xFF1E1F22),
-            child: const Column(
-              children: [
-                SizedBox(height: 12),
-                // Guild icons will go here
-              ],
-            ),
-          ),
-          // Main content
-          Expanded(child: child),
-        ],
-      ),
-    );
-  }
-}
